@@ -1,0 +1,32 @@
+class Guerreiro:
+    def __init__(self, nome, poder):
+        self.nome = nome
+        self.poder = poder
+    
+    def atacar(self):
+        print(f"{self.nome} está atacando com poder de {self.poder}!")
+
+class Curador:
+    def __init__(self, nome, cura):
+        self.nome = nome
+        self.cura = cura
+    
+    def curar(self):
+        print(f"{self.nome} está curando com poder de {self.cura} pontos!")
+
+class Paladino(Guerreiro, Curador):
+    def __init__(self, nome, poder, cura):
+        Guerreiro.__init__(self, nome, poder)
+        Curador.__init__(self, nome, cura)
+    
+    def atacar(self):
+        super().atacar()
+        print(f"O paladino usa sua espada com poder de ataque {self.poder}!")
+    
+    def curar(self):
+        super().curar()
+        print(f"O paladino cura com {self.cura} pontos de vida!")
+
+paladino = Paladino("Paladino da Luz", 80, 50)
+paladino.atacar()
+paladino.curar()
